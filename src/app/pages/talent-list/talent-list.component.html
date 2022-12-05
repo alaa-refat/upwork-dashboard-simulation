@@ -1,0 +1,87 @@
+<div class="app-content pt-5 p-md-3 p-lg-4 mt-5">
+  <div class="container-xl">
+    <div class="position-relative mb-3">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-5">
+                <h2><b>Talent Management</b></h2>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th colspan="2">First Name</th>
+                <th colspan="2">Last Name</th>
+                <th>Image</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let item of talents
+                    | paginate
+                      : {
+                          id: 'listingtalents',
+                          itemsPerPage: 1,
+                          currentPage: page,
+                          totalItems: total
+                        }
+                "
+              >
+                <td colspan="2">{{ item.firstName }}</td>
+                <td colspan="2">{{ item.lastName }}</td>
+                <td>
+                  <a href="#"
+                    ><img
+                      src="{{ item.profilePhoto }}"
+                      class="avatar"
+                      alt="Avatar"
+                  /></a>
+                </td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.password }}</td>
+                <td>
+                  <a class="settings" title="Settings" data-toggle="tooltip"
+                    ><i
+                      class="fas fa-edit"
+                      routerLink="/update-talent/{{ item.authID }}"
+                    ></i
+                  ></a>
+                  <a class="delete" title="Delete" data-toggle="tooltip"
+                    ><i
+                      class="fas fa-times-circle"
+                      (click)="deleteTalent(item)"
+                    ></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="clearfix">
+            <pagination-controls
+              class="pagination"
+              id="listingtalents"
+              (pageChange)="page = $event"
+              maxSize="10"
+              directionLinks="true"
+              autoHide="true"
+              responsive="true"
+              previousLabel="Previous"
+              nextLabel="Next"
+              screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="page"
+              screenReaderCurrentLabel="You're on page"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="app container-fluid app-login p-0 h-100">
+  <div class="row g-0 w-100 app-auth-wrapper mx-0">
+    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center">
+      <div class="d-flex flex-column justify-content-between">
+        <div class="app-auth-body mx-auto my-5">
+          <div class="app-auth-branding">
+            <a class="app-logo" routerLink="/overview"
+              ><img
+                class="logo-icon mr-2"
+                src="assets/upwork_fav.svg"
+                alt="logo"
+            /></a>
+          </div>
+          <h2 class="auth-heading text-center mb-5">
+            Update to Upwork Clients
+          </h2>
+          <div class="auth-form-container text-left">
+            <form [formGroup]="editForm1" (ngSubmit)="onSubmit()" novalidate>
+              <div class="email mb-2">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  formControlName="firstName"
+                  class="form-control shadow-none"
+                  [class.is-valid]="editForm1.controls['firstName'].valid"
+                />
+                <div
+                  [hidden]="
+                    editForm1.controls['firstName'].valid ||
+                    editForm1.controls['firstName'].untouched
+                  "
+                  class="alert alert-danger"
+                >
+                  Name must be at least 3 characters long
+                </div>
+              </div>
+
+              <div class="email mb-2">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  formControlName="lastName"
+                  class="form-control shadow-none"
+                  [class.is-valid]="editForm1.controls['lastName'].valid"
+                />
+                <div
+                  [hidden]="
+                    editForm1.controls['lastName'].valid ||
+                    editForm1.controls['lastName'].untouched
+                  "
+                  class="alert alert-danger"
+                >
+                  Name must be at least 3 characters long
+                </div>
+              </div>
+
+              <div class="email mb-2">
+                <label>Password</label>
+                <input
+                  type="text"
+                  formControlName="password"
+                  class="form-control shadow-none"
+                  [class.is-valid]="editForm1.controls['password'].valid"
+                />
+                <div
+                  [hidden]="
+                    editForm1.controls['password'].valid ||
+                    editForm1.controls['password'].untouched
+                  "
+                  class="alert alert-danger"
+                >
+                  Password must be 8 numbers
+                </div>
+              </div>
+
+              <div class="extra mb-2">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="RememberPassword"
+                  />
+                  <label class="form-check-label" for="RememberPassword">
+                    I agree to Portal's
+                    <a href="#" class="app-link">Terms of Service</a> and
+                    <a href="#" class="app-link">Privacy Policy</a>.
+                  </label>
+                </div>
+              </div>
+              <!--//extra-->
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn app-btn-primary btn-block theme-btn mx-auto"
+                  [disabled]="editForm1.invalid"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
+            <!--//auth-form-->
+          </div>
+          <!--//auth-form-container-->
+        </div>
+        <!--//auth-body-->
+        
+      </div>
+    </div>
+
+    <div class="col-12 col-md-5 col-lg-6 px-0 backgrounds"></div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="router.url !== '/signin'">
+  <div
+    *ngIf="
+      router.url !== '/resetpassword' &&
+      router.url !== '/404error' &&
+      router.url !== '/create' &&
+      router.url !== '/restform'
+    "
+  >
+    <header class="app-header fixed-top">
+      <app-header></app-header>
+      <app-sidebar></app-sidebar>
+    </header>
+  </div>
+  <div
+    [ngClass]="{
+      'app-wrapper':
+        router.url !== '/resetpassword' &&
+        router.url !== '/404error' &&
+        router.url !== '/create' &&
+        router.url !== '/restform'
+    }"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  <div
+    *ngIf="
+      router.url !== '/resetpassword' &&
+      router.url !== '/404error' &&
+      router.url !== '/create' &&
+      router.url !== '/restform'
+    "
+  >
+    <div class="app-auth-footer mb-0 fixed-bottom">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!(router.url !== '/signin')">
+  <app-signin></app-signin>
+</div>

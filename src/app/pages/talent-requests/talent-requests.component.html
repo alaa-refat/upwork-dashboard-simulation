@@ -1,0 +1,86 @@
+<div class="app-content pt-5 p-md-3 p-lg-4 mt-5">
+  <div class="container-xl">
+    <div class="position-relative mb-3">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-5">
+                <h2><b>Talent Requests</b></h2>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let item of talents
+                    | paginate
+                      : {
+                          id: 'listingtalentsrequests',
+                          itemsPerPage: 1,
+                          currentPage: page,
+                          totalItems: total
+                        }
+                "
+              >
+                <td>{{ item.id }}</td>
+                <td>
+                  <a href="#"
+                    ><img
+                      src="{{ item.profilePhoto }}"
+                      class="avatar"
+                      alt="Avatar"
+                  /></a>
+                  {{ item.firstName + " " + item.lastName }}
+                </td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.password }}</td>
+                <td>
+                  <a class="settings" title="Settings" data-toggle="tooltip"
+                    ><i
+                      class="far fa-check-circle"
+                      (click)="updateTalentRequests(item.authID)"
+                    ></i
+                  ></a>
+                  <a class="delete" title="Delete" data-toggle="tooltip"
+                    ><i
+                      class="fas fa-times-circle"
+                      (click)="deleteTalentRequests(item.authID)"
+                    ></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="clearfix">
+            <pagination-controls
+              class="pagination"
+              id="listingtalentsrequests"
+              (pageChange)="page = $event"
+              maxSize="10"
+              directionLinks="true"
+              autoHide="true"
+              responsive="true"
+              previousLabel="Previous"
+              nextLabel="Next"
+              screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="page"
+              screenReaderCurrentLabel="You're on page"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
